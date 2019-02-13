@@ -1,0 +1,21 @@
+--- agent/Makefile.in	2019-01-30 13:40:43.576609242 +0900
++++ agent/Makefile.in.stretch	2019-01-30 13:49:30.807727100 +0900
+@@ -66,11 +66,16 @@
+ LDFLAGS += `pkg-config --libs protobuf grpc++ grpc` -ldl -lgpr
+ CXXFLAGSDEVICE = -I./device -I./device/$(OPENOLTDEVICE) -I./device/generic
+ 
++ID=debian
++LSB_RELEASE=$(shell lsb_release -cs)
+ export CXX CXXFLAGS
+ 
+ prereq:
+-	sudo apt-get -q -y install git pkg-config build-essential autoconf libtool libgflags-dev libgtest-dev clang libc++-dev unzip docker.io
+-	sudo apt-get install -y build-essential autoconf libssl-dev gawk debhelper dh-systemd init-system-helpers
++	sudo apt-get -q -y install git pkg-config build-essential autoconf libtool libgflags-dev libgtest-dev clang libc++-dev unzip apt-transport-https ca-certificates curl gnupg2 software-properties-common
++	curl -fsSL https://download.docker.com/linux/$(ID)/gpg | sudo apt-key add -
++	sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/$(ID) $(LSB_RELEASE) stable"
++	sudo apt update
++	sudo apt install -y docker-ce build-essential autoconf libssl-dev gawk debhelper dh-systemd init-system-helpers
+ 
+ 	# Install GRPC, libprotobuf and protoc
+ 	rm -rf $(GRPC_DST)

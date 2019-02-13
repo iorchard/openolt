@@ -1,7 +1,7 @@
 :orphan:
 
-How to Build OpenOLT
-=====================
+How to Build OpenOLT on debian jessie
+======================================
 
 The purpose of this document is to guide how to build OpenOLT agent on 
 debian jessie.
@@ -57,7 +57,7 @@ Save the prerequisite files in openolt_build directory.::
 Download the openolt source code.::
 
     orchard@openolt-build:~/openolt_build$ git clone \
-                                        https://gerrit.opencord.org/openolt
+                                    https://github.com/iorchard/openolt.git
     Cloning into 'openolt'...
     remote: Counting objects: 4, done
     remote: Total 547 (delta 0), reused 547 (delta 0)
@@ -99,8 +99,8 @@ Build openolt agent.::
      orchard@openolt-build:~/openolt_build/openolt/agent$ make \
             OPENOLTDEVICE=asfvolt16
 
-Building openolt agent takes a very very long time.
-So you might run the above command with nohup.::
+Building openolt agent takes a very long time.
+So you might want to run the above command with nohup.::
 
      orchard@openolt-build:~/openolt_build/openolt/agent$ nohup make \
             OPENOLTDEVICE=asfvolt16 &
