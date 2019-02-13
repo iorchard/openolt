@@ -110,7 +110,7 @@ Then you can forget about it for now and come to see how it is built later.
 Lastly make an openolt agent debian package. We need to do something 
 beforehand.
 
-Without the above change, there will be an error to make deb package.::
+Without the change, there will be an error to make deb package.::
 
     orchard@openolt-build:~/openolt_build/openolt/agent$ make \
                                                 OPENOLTDEVICE=asfvolt16 deb
